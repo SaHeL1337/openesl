@@ -19,5 +19,5 @@ func main() {
 		}
 	}
 	elapsed := time.Since(start)
-	log.Printf("Rendering %s random images took %s", string(len(*items)), elapsed)
+	log.Printf("Rendering %s random images took %s", strconv.Itoa(len(*items)), elapsed)
 }
