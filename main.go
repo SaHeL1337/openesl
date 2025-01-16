@@ -12,7 +12,10 @@ func main() {
 	items := getSampleItems(1000)
 
 	for i, item := range *items {
-		renderImage(&item)
+		err := renderImage(&item)
+		if err != nil {
+			log.Printf("Error rendering image: %v", err)
+		}
 		if i%100 == 0 {
 			elapsed := time.Since(start)
 			fmt.Printf("Rendering %s images in %s \n", strconv.Itoa(i), elapsed)

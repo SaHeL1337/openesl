@@ -22,11 +22,11 @@ var (
 	imagePath = "images/"
 )
 
-func renderImage(item *Item) (bool, error) {
+func renderImage(item *Item) error {
 
 	template, err := parseTemplate()
 	if err != nil {
-		return false, err
+		return err
 	}
 	img := image.NewRGBA(image.Rect(0, 0, int(template.Width), int(template.Height)))
 
@@ -44,7 +44,7 @@ func renderImage(item *Item) (bool, error) {
 	if err := png.Encode(f, img); err != nil {
 		panic(err)
 	}
-	return true, nil
+	return nil
 }
 
 func renderText(img *image.RGBA, template *Template) {
