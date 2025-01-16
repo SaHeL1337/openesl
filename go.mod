@@ -1,4 +1,4 @@
-module example.com/m
+module openesl.com
 
 go 1.23.0
 
