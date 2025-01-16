@@ -1,0 +1,42 @@
+{
+    "width": 300,
+    "height": 100,
+    "background": [255, 255, 240, 255],
+    "text": [
+        {
+            "content": "Bio Zwiebeln",
+            "color": [0, 0, 0, 255],
+            "size": 20,
+            "x": 10,
+            "y": 40
+        },
+        {
+            "content": "Klasse 2",
+            "color": [0, 0, 0, 255],
+            "size": 14,
+            "x": 10,
+            "y": 55
+        },
+        {
+            "content": "Ursrungsland siehe Etikett",
+            "color": [0, 0, 0, 255],
+            "size": 8,
+            "x": 10,
+            "y": 65
+        },
+        {
+            "content": "1-KG Packung",
+            "color": [0, 0, 0, 255],
+            "size": 11,
+            "x": 170,
+            "y": 90
+        },
+        {
+            "content": "2.49",
+            "color": [0, 0, 0, 255],
+            "size": 45,
+            "x": 170,
+            "y": 50
+        }
+    ]
+}
