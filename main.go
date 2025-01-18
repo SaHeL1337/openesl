@@ -9,9 +9,9 @@ import (
 
 func main() {
 	start := time.Now()
-	items := getSampleItems(1000)
+	items := getSampleItems(10000)
 
-	maxWorkers := 100
+	maxWorkers := 300
 	queue := make(chan Item, maxWorkers)
 	wg := &sync.WaitGroup{}
 
