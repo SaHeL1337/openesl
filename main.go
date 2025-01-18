@@ -1,26 +1,40 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"strconv"
+	"sync"
 	"time"
 )
 
 func main() {
 	start := time.Now()
-	items := getSampleItems(1000)
+	items := getSampleItems(10000)
 
-	for i, item := range *items {
+	maxWorkers := 300
+	queue := make(chan Item, maxWorkers)
+	wg := &sync.WaitGroup{}
+
+	for i := 0; i < maxWorkers; i++ {
+		wg.Add(1)
+		go worker(wg, queue)
+	}
+
+	for _, item := range *items {
+		queue <- item
+	}
+	close(queue)
+	wg.Wait()
+	elapsed := time.Since(start)
+	log.Printf("Rendering %s random images took %s", strconv.Itoa(len(*items)), elapsed)
+}
+
+func worker(wg *sync.WaitGroup, queue chan Item) {
+	defer wg.Done()
+	for item := range queue {
 		err := renderImage(&item)
 		if err != nil {
 			log.Printf("Error rendering image: %v", err)
 		}
-		if i%100 == 0 {
-			elapsed := time.Since(start)
-			fmt.Printf("Rendering %s images in %s \n", strconv.Itoa(i), elapsed)
-		}
 	}
-	elapsed := time.Since(start)
-	log.Printf("Rendering %s random images took %s", strconv.Itoa(len(*items)), elapsed)
 }
