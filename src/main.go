@@ -27,6 +27,8 @@ func main() {
 	wg.Wait()
 	elapsed := time.Since(start)
 	log.Printf("Rendering %s random images took %s", strconv.Itoa(len(*items)), elapsed)
+	log.Print("Sleeping now for 1 hour")
+	time.Sleep(3600 * time.Second)
 }
 
 func worker(wg *sync.WaitGroup, queue chan Item) {
