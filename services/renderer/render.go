@@ -35,7 +35,7 @@ func renderImage(item *Item) error {
 
 	renderText(img, &template)
 
-	path := path.Join(imagePath, strconv.Itoa(item.id)+".png")
+	path := path.Join(imagePath, strconv.Itoa(item.Id)+".png")
 	f, err := os.Create(path)
 	if err != nil {
 		panic(err)
