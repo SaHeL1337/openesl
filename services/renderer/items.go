@@ -5,16 +5,16 @@ import (
 )
 
 type Item struct {
-	id    int
-	name  string
-	price float64
+	Id    int
+	Name  string
+	Price float64
 }
 
 func getSampleItems(amount int) *[]Item {
 	//sample comment
 	var items []Item
 	for i := 0; i < amount; i++ {
-		items = append(items, Item{id: i, name: "item", price: rand.Float64()})
+		items = append(items, Item{Id: i, Name: "item", Price: rand.Float64()})
 	}
 	return &items
 }

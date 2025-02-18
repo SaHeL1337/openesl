@@ -1,6 +1,6 @@
 FROM golang:latest as builder
 WORKDIR /build
-COPY . .
+COPY /services/renderer/. .
 RUN go mod download
 RUN CGO_ENABLED=0 go build -o ./main
 
@@ -8,8 +8,8 @@ RUN CGO_ENABLED=0 go build -o ./main
 FROM scratch
 WORKDIR /app
 COPY --from=builder /build/main ./main
-COPY template.json ./template.json
-COPY Xolonium-Bold.ttf ./Xolonium-Bold.ttf
-COPY ./images ./images
+COPY /services/renderer/template.json ./template.json
+COPY /services/renderer/Xolonium-Bold.ttf ./Xolonium-Bold.ttf
+COPY /services/renderer/images ./images
 EXPOSE 80
 ENTRYPOINT ["./main"]

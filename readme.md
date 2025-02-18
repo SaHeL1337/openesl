@@ -27,8 +27,15 @@ and even later, there will be a way to save and distribute those images to some 
 
 ## Prerequisits
 [x] Go 1.23+
+[x] Nats 2.10.25
 
 ## How to run
+Start Nats
+```shell
+docker run --network=host --workdir=/ --restart=no --runtime=runc -d nats:latest
+```
+
+Start the program
 ```shell
 go run .
 ```
