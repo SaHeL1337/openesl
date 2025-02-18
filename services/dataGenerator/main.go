@@ -1,12 +1,14 @@
 package main
 
 import (
+	"context"
 	"log"
 	"strconv"
 	"time"
 
 	items "github.com/SaHeL1337/openesl/pkg/item"
 	"github.com/nats-io/nats.go"
+	"github.com/nats-io/nats.go/jetstream"
 )
 
 type Item = items.Item
@@ -17,13 +19,13 @@ func main() {
 
 	items := items.GetSampleItems(1000)
 
+	js, _ := jetstream.New(nc)
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
+	defer cancel()
+
 	for _, item := range *items {
+		js.Publish(ctx, "image3.render", []byte("{\"id\": "+strconv.Itoa(item.Id)+",\"name\": \""+item.Name+"\",\"price\": "+strconv.FormatFloat(item.Price, 'f', -1, 64)+"}"))
 		log.Printf("Sending item %d to renderer", item.Id)
-		err := nc.Publish("image.render", []byte("{\"id\": "+strconv.Itoa(item.Id)+",\"name\": \""+item.Name+"\",\"price\": "+strconv.FormatFloat(item.Price, 'f', -1, 64)+"}"))
-		if err != nil {
-			log.Printf("Error sending item to renderer: %v", err)
-		}
-		time.Sleep(0 * time.Millisecond)
 	}
 
 	elapsed := time.Since(start)

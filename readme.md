@@ -30,9 +30,9 @@ and even later, there will be a way to save and distribute those images to some 
 [x] Nats 2.10.25
 
 ## How to run
-Start Nats
+Start Nats with jetstream enabled for persistent storage
 ```shell
-docker run --network=host --workdir=/ --restart=no --runtime=runc -d nats:latest
+docker run --network=host -d nats:latest -js
 ```
 
 Start the program
