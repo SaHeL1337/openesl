@@ -1,4 +1,4 @@
-package main
+package item
 
 import (
 	"math/rand"
@@ -10,7 +10,7 @@ type Item struct {
 	Price float64
 }
 
-func getSampleItems(amount int) *[]Item {
+func GetSampleItems(amount int) *[]Item {
 	//sample comment
 	var items []Item
 	for i := 0; i < amount; i++ {

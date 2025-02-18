@@ -7,8 +7,11 @@ import (
 	"sync"
 	"time"
 
+	items "github.com/SaHeL1337/openesl/pkg/item"
 	"github.com/nats-io/nats.go"
 )
+
+type Item = items.Item
 
 func main() {
 	start := time.Now()

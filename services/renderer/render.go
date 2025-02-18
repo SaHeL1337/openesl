@@ -19,7 +19,7 @@ import (
 var (
 	dpi       = flag.Float64("dpi", 72, "screen resolution in Dots Per Inch")
 	fontfile  = flag.String("fontfile", "Xolonium-Bold.ttf", "filename of the ttf font")
-	imagePath = "images/"
+	imagePath = "../images/"
 )
 
 func renderImage(item *Item) error {
